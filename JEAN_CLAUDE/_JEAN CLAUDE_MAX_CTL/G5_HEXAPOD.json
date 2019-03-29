@@ -1,0 +1,89 @@
+{
+	"pattrstorage" : 	{
+		"name" : "G5_HEXAPOD.json",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"ControlMode" : [ 1 ],
+					"Servo_Control::InterpTime" : [ 500.0 ],
+					"Servo_Control::Reset" : [ 0.0 ],
+					"Servo_Control::Servo[10]" : [ 512.0 ],
+					"Servo_Control::Servo[11]" : [ 512.0 ],
+					"Servo_Control::Servo[12]" : [ 512.0 ],
+					"Servo_Control::Servo[13]" : [ 512.0 ],
+					"Servo_Control::Servo[14]" : [ 512.0 ],
+					"Servo_Control::Servo[15]" : [ 512.0 ],
+					"Servo_Control::Servo[16]" : [ 512.0 ],
+					"Servo_Control::Servo[17]" : [ 512.0 ],
+					"Servo_Control::Servo[18]" : [ 512.0 ],
+					"Servo_Control::Servo[1]" : [ 512.0 ],
+					"Servo_Control::Servo[2]" : [ 512.0 ],
+					"Servo_Control::Servo[3]" : [ 512.0 ],
+					"Servo_Control::Servo[4]" : [ 512.0 ],
+					"Servo_Control::Servo[5]" : [ 512.0 ],
+					"Servo_Control::Servo[6]" : [ 512.0 ],
+					"Servo_Control::Servo[7]" : [ 512.0 ],
+					"Servo_Control::Servo[8]" : [ 512.0 ],
+					"Servo_Control::Servo[9]" : [ 512.0 ],
+					"Commander_Emulation::L1" : [ 0.0 ],
+					"Commander_Emulation::L2" : [ 0.0 ],
+					"Commander_Emulation::L3" : [ 0.0 ],
+					"Commander_Emulation::LeftJoystick" : [ 63, 63 ],
+					"Commander_Emulation::R1" : [ 0.0 ],
+					"Commander_Emulation::R2" : [ 0.0 ],
+					"Commander_Emulation::R3" : [ 0.0 ],
+					"Commander_Emulation::RightJoystick" : [ 63, 63 ],
+					"Commander_Emulation::live.button[6]" : [ 0.0 ],
+					"Commander_Emulation::live.button[7]" : [ 0.0 ],
+					"Commander_Emulation::live.toggle[6]" : [ 0.0 ],
+					"Commander_Emulation::live.toggle[7]" : [ 0.0 ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"ControlMode" : [ 1 ],
+					"Servo_Control::InterpTime" : [ 500.0 ],
+					"Servo_Control::Reset" : [ 0.0 ],
+					"Servo_Control::Servo[10]" : [ 512.0 ],
+					"Servo_Control::Servo[11]" : [ 512.0 ],
+					"Servo_Control::Servo[12]" : [ 512.0 ],
+					"Servo_Control::Servo[13]" : [ 800.0 ],
+					"Servo_Control::Servo[14]" : [ 512.0 ],
+					"Servo_Control::Servo[15]" : [ 800.0 ],
+					"Servo_Control::Servo[16]" : [ 512.0 ],
+					"Servo_Control::Servo[17]" : [ 800.0 ],
+					"Servo_Control::Servo[18]" : [ 512.0 ],
+					"Servo_Control::Servo[1]" : [ 512.0 ],
+					"Servo_Control::Servo[2]" : [ 512.0 ],
+					"Servo_Control::Servo[3]" : [ 512.0 ],
+					"Servo_Control::Servo[4]" : [ 512.0 ],
+					"Servo_Control::Servo[5]" : [ 512.0 ],
+					"Servo_Control::Servo[6]" : [ 512.0 ],
+					"Servo_Control::Servo[7]" : [ 512.0 ],
+					"Servo_Control::Servo[8]" : [ 512.0 ],
+					"Servo_Control::Servo[9]" : [ 512.0 ],
+					"Commander_Emulation::L1" : [ 0.0 ],
+					"Commander_Emulation::L2" : [ 0.0 ],
+					"Commander_Emulation::L3" : [ 0.0 ],
+					"Commander_Emulation::LeftJoystick" : [ 63, 63 ],
+					"Commander_Emulation::R1" : [ 0.0 ],
+					"Commander_Emulation::R2" : [ 0.0 ],
+					"Commander_Emulation::R3" : [ 0.0 ],
+					"Commander_Emulation::RightJoystick" : [ 63, 63 ],
+					"Commander_Emulation::live.button[6]" : [ 0.0 ],
+					"Commander_Emulation::live.button[7]" : [ 0.0 ],
+					"Commander_Emulation::live.toggle[6]" : [ 0.0 ],
+					"Commander_Emulation::live.toggle[7]" : [ 0.0 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}
