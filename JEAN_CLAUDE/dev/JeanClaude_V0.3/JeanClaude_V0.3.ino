@@ -58,7 +58,7 @@ void setup(){
 
   // wait, then check the voltage (LiPO safety)
   delay (1000);
-  float voltage = (ax12GetRegister (1, AX_PRESENT_VOLTAGE, 1)) / 10.0;
+  float voltage = (ax12GetRegister (2, AX_PRESENT_VOLTAGE, 1)) / 10.0;//Check on motor 2, the 1 is faulty for now
   Serial.print ("System Voltage: ");
   Serial.print (voltage);
   Serial.println (" volts.");

@@ -1,4 +1,19 @@
-﻿JEAN CLAUDE :
+JEAN CLAUDE :
+
+ATTENTION !!!!
+La batterie est sensible. TOUJOURS brancher l'indicateur de charge (le petit écran qui fait bipbip très fort quand on le connecte) sur la batterie avant de démarrer JeanClaude, et le laisser connecté tant qu'on l'utilise. Quand il fait bipbip super fort, la batterie doit immédiatement être chargée.
+
+ La connectique de la batterie pour l'indicateur de charge a 3 fils noir et un rouge. Le fil noir à l'exterieur doit être branché sur le "-" de l'indicateur de charge, le rouge se retrouvant donc sur "3s".
+
+Pour charger la batterie, brancher le connecteur à 4 fils de la batterie et le connecteur de puissance au chargeur, et lancer le mode "LiPo Balance, 4,5A, 11.1V".
+
+La batterie avec laquelle je vous le livre a déjà eu quelques soucis, j'ai fait 2/3 tours de magie pour la remettre en vie mais utilisez de préférence la nouvelle qui est arrivée normalement avant vous au CDA.
+
+
+ARDUINO : Si besoin de modifier le sketch, ATTENTION, UTILISER ARDUINO 1.0.6. Les versions plus récentes ne fonctionnent pas avec la board Arbotix.
+Il faut aussi installer la librairie pour la carte arbotix, a placer dans /Documents/Arduino/Hardware.
+Pour uploader le sketch, penser à déconnecter le patch JC_Control.maxpat. Appuyer sur le bouton "Reset", installé sur la "tour de contrôle" de jeanclaude, à l'avant, sous les capteurs IR, immédiatement après avoir cliqué sur "upload"dans l'ide arduino.
+
 
 Notes d’utilisation. A priori aucune de ces opération n’est nécessaire, je les mets ici pour mémoire.
 
@@ -11,8 +26,6 @@ uploader le sketch arbotix « ros » dans la carte, utiliser le logiciel dynam
 POUR DEBUGGER LES MOTEURS,
 utiliser le U2D2 et l’adaptateur pour alimentation, brancher chacun dans un des ports du dynamixel, lancer dynamixel wizard 2.0. 
 
-ARDUINO : Si besoin de modifier le sketch, ATTENTION, UTILISER ARDUINO 1.0.6. Les versions plus récentes ne fonctionnent pas avec la board Arbotix.
-Il faut aussi installer la librairie pour la carte arbotix, a placer dans /Documents/Arduino/Hardware.
 
 
 COCO :
