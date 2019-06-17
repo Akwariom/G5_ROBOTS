@@ -1,0 +1,22 @@
+﻿JEAN CLAUDE :
+
+Notes d’utilisation. A priori aucune de ces opération n’est nécessaire, je les mets ici pour mémoire.
+
+CONFIGURATION DU XBEE : 
+utiliser XCTU (dans _softs_installs ou ici :https://www.digi.com/download/xctu-macos
+
+POUR ADDRESSER LES MOTEURS
+uploader le sketch arbotix « ros » dans la carte, utiliser le logiciel dynamanager
+
+POUR DEBUGGER LES MOTEURS,
+utiliser le U2D2 et l’adaptateur pour alimentation, brancher chacun dans un des ports du dynamixel, lancer dynamixel wizard 2.0. 
+
+ARDUINO : Si besoin de modifier le sketch, ATTENTION, UTILISER ARDUINO 1.0.6. Les versions plus récentes ne fonctionnent pas avec la board Arbotix.
+Il faut aussi installer la librairie pour la carte arbotix, a placer dans /Documents/Arduino/Hardware.
+
+
+COCO :
+
+Penser à modifier le sketch arduino « COCO_Wifi_Controller » pour intégrer les bons paramètres Wifi (SSID, mot de passe, IPs). La carte est une « Genuino MKR1000 ».
+
+Penser à éteindre COCO par la commande « Turn Off » du patch G5_COCO_WIFI_CTL. Le bouton n’est plus actif quand on utilise le mode « Full Control » 
