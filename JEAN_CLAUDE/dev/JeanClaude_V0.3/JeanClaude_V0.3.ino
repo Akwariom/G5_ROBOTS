@@ -13,6 +13,8 @@
 #include <ax12.h>
 #include <BioloidController.h>
 #include "nuke.h"
+#include <EEPROM.h>
+
 #define AX12_HEXAPOD
 int multiplier;
 #define RIPPLE_SPEED    1
@@ -22,7 +24,9 @@ int multiplier;
 
 //___________________JEAN CLAUDE MANUAL CONTROL
 const int servoCount=18;
-int servoPos[18];
+int servoPos[18]; // TO STORE
+int pose[19]; // TO RECALL (first element is the length of the array - 1 !)
+int interp_time = 20;
 unsigned long now,lastUpdateMillis;
 unsigned long sensorsInterval=66;
 //___________________COMMUNICATION 
@@ -40,9 +44,10 @@ String runMode="AUTO";
 #define sensor5Pin A4
 #define sensor6Pin A5
 
-
 //__________________SETUP__________
 void setup(){
+
+  pose[0] = 18; // (first element is the lenght of the array - 1 !)
 
   for(int i=0;i<servoCount;i++)
   {
@@ -76,6 +81,10 @@ void setup(){
   }
   multiplier = AMBLE_SPEED;
   tranTime=500;
+
+  Serial.print("EEPROM: ");
+  Serial.println(EEPROM.length());
+
 }
 //______________END SETUP__________
 
@@ -220,15 +229,3 @@ void loop(){
  bioloid.interpolateStep();
  }
  */
-
-
-
-
-
-
-
-
-
-
-
-
