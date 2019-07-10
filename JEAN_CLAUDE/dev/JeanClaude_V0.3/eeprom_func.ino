@@ -1,6 +1,24 @@
 
 // Chaque preset prend 18 * 2 byte dans l'eeprom
 
+// EEPROM CLEAR
+
+void eepromClear() {
+  for (int i = 0 ; i < EEPROM.length() ; i++) {
+    EEPROM.write(i, 0);
+  }
+}
+
+void eepromDump() {
+  Serial.print("eeprom ");
+  for (int i = 0 ; i < EEPROM.length() ; i++) {
+    Serial.print(EEPROM.read(i));
+  }
+}
+
+void eepromLoad() {
+  // TODO
+}
 
 // STORE POSITION FROM EEPROM TO servoPos
 
@@ -33,6 +51,7 @@ void recallPose(int i) {
 
 void doPose() {
   Serial.println("GO !");
+  // TODO DON'T RECALL A ZERO POSITION !!!!!!
   bioloid.loadPose2(pose);   // load the pose into the nextPose buffer
   bioloid.readPose();       // read in current servo positions to the curPose buffer
   delay(10);

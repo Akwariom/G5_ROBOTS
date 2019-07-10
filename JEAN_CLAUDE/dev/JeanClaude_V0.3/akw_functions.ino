@@ -64,63 +64,77 @@ void updateHexapodParams()
       }
     }
   }
-
   else if (first3chars == "rex") {
+    Serial.println("Relax");
     for (int thisServo = 1; thisServo <= servoCount; thisServo++)
     {
       Relax(thisServo);
     }
   }
-
   else if (first3chars == "get") {
-    for (int thisServo = 1; thisServo <= servoCount; thisServo++)
-    {
-      servoPos[thisServo] = GetPosition(thisServo);
-      Serial.println("actualPos " + String(thisServo) + " " + String(GetPosition(thisServo)));
-      // TorqueOn(thisServo);
-    }
+    Serial.println("GetPosition");
+    getPositions();
   }
   else if (first3chars == "tor") {
+    Serial.println("Torque On");
     for (int thisServo = 1; thisServo <= servoCount; thisServo++)
     {
       //Serial.println("actualPos "+String(thisServo)+" "+String(GetPosition(thisServo)));
       TorqueOn(thisServo);
     }
   }
-
   // see eeprom_func
-
   // STORE POSITION FROM servoPos TO EEPROM
   else if (first3chars == "sto") {
     int pstNum = 254 * long(message[3]) + long(message[4]) - 1;
-    Serial.print("Store ");
-    Serial.println(pstNum);
+    Serial.println("EEPROM Store " + String(pstNum));
     storePose(pstNum);
   }
   // RECALL POSITION FROM EEPROM TO servoPos + GO
   else if (first3chars == "rec") {
     int pstNum = 254 * long(message[3]) + long(message[4]) - 1;
-    Serial.print("Recall ");
-    Serial.println(pstNum);
+    Serial.println("EEPROM Recall " + String(pstNum));
     recallPose(pstNum);
     printPose();
     doPose();
-    
   }
+  // EEPROM POSITION INTERP TIME (centiseconds)
   else if (first3chars == "tim") {
     interp_time = 254 * long(message[3]) + long(message[4]) - 1;
-    Serial.print("InterpTime ");
-    Serial.println(interp_time);
+    Serial.println("EEPROM InterpTime " + String(interp_time));
   }
-
+  // EEPROM CLEAR
+  else if (first3chars == "eeC") {
+    Serial.println("EEPROM Clear");
+    eepromClear();
+  }
+  // EEPROM DUMP
+  else if (first3chars == "eeD") {
+    Serial.println("EEPROM Dump");
+    eepromDump();
+  }
+  // EEPROM LOAD
+  else if (first3chars == "eeL") {
+    // TODO get arguments
+    Serial.println("EEPROM Load");
+    eepromLoad();
+  }
+  else if (first3chars == "axr") {
+    Serial.println("resetAX12Error");
+    resetAX12Error();
+  }
+  else if (first3chars == "rst") {
+    Serial.println("softwareReset");
+    softwareReset();
+  }
+  else if (first3chars == "chk") {
+    Serial.println("checkErrorsAndRelax");
+    checkErrorsAndRelax();
+  }
   /*else if (first3chars == "tra"){
     tranTime= 254*long(message[3])+long(message[4]);
     if(runMode=="MANU")  bioloid.interpolateSetup(tranTime);
     }*/
-
-  else if (first3chars == "axr") {
-    resetAX12Error();
-  }
 }
 
 //__________________________AUTO CONTROL
@@ -134,6 +148,53 @@ void updateHexapodGaits()
   bioloid.interpolateStep();
 }
 
+void sendSensorsStates() {
+  Serial.println("sensor " + String(analogRead(sensor1Pin))
+                 + " " + String(analogRead(sensor2Pin))
+                 + " " + String(analogRead(sensor3Pin))
+                 + " " + String(analogRead(sensor4Pin))
+                 + " " + String(analogRead(sensor5Pin))
+                 + " " + String(analogRead(sensor6Pin)));
+}
+
+void getPositions() {
+  for (int thisServo = 1; thisServo <= servoCount; thisServo++)
+  {
+    servoPos[thisServo] = GetPosition(thisServo);
+    Serial.println("actualPos " + String(thisServo) + " " + String(GetPosition(thisServo)));
+    // TorqueOn(thisServo);
+  }
+}
+
+void checkErrorsAndRelax() {
+  for (int thisServo = 1; thisServo < servoCount + 1; thisServo++)
+  {
+    Serial.println("volt " + String(thisServo) + " " + String((ax12GetRegister (thisServo, AX_PRESENT_VOLTAGE, 1)) / 10.0));
+    int err = dxlGetError(thisServo);
+    if (err > 0) {
+      Relax(thisServo);
+      Serial.println("fault " + String(thisServo) + " " + String(err));
+    }
+    Serial.println("err " + String(thisServo) + " " + String(err));
+  }
+}
+
+void softwareReset()
+{
+  wdt_enable(WDTO_15MS);
+  while (1) {}
+}
+
+void resetAX12Error() {
+  Serial.println("Resetting Torques");
+  for (int thisServo = 1; thisServo < servoCount; thisServo++)
+  {
+    ax12SetRegister (thisServo, AX_TORQUE_ENABLE, 1);
+    ax12SetRegister (thisServo, AX_ALARM_SHUTDOWN, 0);
+    //  delay(1000);
+    // ax12SetRegister (thisServo, AX_TORQUE_ENABLE,1);
+  }
+}
 
 //__________________________MANUAL CONTROL
 
@@ -154,39 +215,3 @@ void updateHexapodGaits()
   }
   }
 */
-
-
-void   sendSensorsStates() {
-  Serial.println("s1: " + String(analogRead(sensor1Pin)));
-  Serial.println("s2: " + String(analogRead(sensor2Pin)));
-  Serial.println("s3: " + String(analogRead(sensor3Pin)));
-  Serial.println("s4: " + String(analogRead(sensor4Pin)));
-  Serial.println("s5: " + String(analogRead(sensor5Pin)));
-  Serial.println("s6: " + String(analogRead(sensor6Pin)));
-}
-
-
-
-void checkAndResetAX12Error() {
-  for (int thisServo = 1; thisServo < servoCount + 1; thisServo++)
-  {
-    if (ax12GetRegister (thisServo, ERR_OVERLOAD, 1))
-    {
-      Relax(thisServo);
-      Serial.println("ReEnabling Faulty Servo: " + String(thisServo));
-      TorqueOn(thisServo);
-      //ax12SetRegister (thisServo, AX_TORQUE_ENABLE,1);
-    }
-  }
-}
-
-void resetAX12Error() {
-  Serial.println("Resetting Torques");
-  for (int thisServo = 1; thisServo < servoCount; thisServo++)
-  {
-    ax12SetRegister (thisServo, AX_TORQUE_ENABLE, 1);
-    ax12SetRegister (thisServo, AX_ALARM_SHUTDOWN, 0);
-    //  delay(1000);
-    // ax12SetRegister (thisServo, AX_TORQUE_ENABLE,1);
-  }
-}
