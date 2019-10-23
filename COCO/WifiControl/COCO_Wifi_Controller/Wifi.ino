@@ -11,7 +11,7 @@ void wifiSetup(){
     if (debug) Serial.print("Attempting to connect to SSID: ");
     if (debug) Serial.println(ssid);
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-    WiFi.config(static_ip);
+    //WiFi.config(static_ip);
     status = WiFi.begin(ssid, pass);
 
     // wait 10 seconds for connection:

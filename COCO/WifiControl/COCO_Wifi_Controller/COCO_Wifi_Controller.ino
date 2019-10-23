@@ -10,13 +10,13 @@
 
 //___________________________CONFIGURATION WIFI____________
 
-IPAddress static_ip(10, 0, 0, 110);
+//IPAddress static_ip(10, 0, 0, 110);
 unsigned int localPort = 2390;      // port local d'écoute
-char ssid[] = "akw_wifi";        // SSID du réseau
-char pass[] = "motdepasse";    // mot de passe
-boolean debug = false; // mettre "true" en cas de probleme de connection pour vérifier ce qui se passe dans le serial monitor
+char ssid[] = "Pulso2";        // SSID du réseau
+char pass[] = "pulsopulso";    // mot de passe
+boolean debug = true; // mettre "true" en cas de probleme de connection pour vérifier ce qui se passe dans le serial monitor
 
-IPAddress distantIP(10, 0, 0, 100); // addresse ip de l'ordi destinataire
+IPAddress distantIP(192, 168, 0, 110); // addresse ip de l'ordi destinataire
 unsigned int distantPort = 2391;   // port distant 
 
 
@@ -69,6 +69,7 @@ void setup() {
   Serial.begin(19200);
   wifiSetup();
   Serial.println("Connecting to COCO");
+  getIp();
   COCO.begin(115200);          // Begin Serial2 after chnging COCO's baudrate to 9200
   pinPeripheral(0, PIO_SERCOM);   // Assign pins 0 & 1 SERCOM functionality
   pinPeripheral(1, PIO_SERCOM);
@@ -76,6 +77,13 @@ void setup() {
   Serial.println("Ready to roll !");
   setDigitLEDs(1, 2, 3, 4);
   //turnOff();
+}
+
+void getIp()
+{
+  Udp.beginPacket(distantIP, distantPort);
+  Udp.write(WiFi.localIP());
+  Udp.endPacket();
 }
 
 void loop() {
@@ -90,8 +98,3 @@ void loop() {
     // Serial.println(getSensorData(7));//7 : bumps and wheel drops
   }
 }
-
-
-
-
-
