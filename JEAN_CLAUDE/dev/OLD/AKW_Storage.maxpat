@@ -38,6 +38,33 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-16",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 255.0, 94.0, 96.0, 22.0 ],
+					"style" : "",
+					"text" : "prepend symbol"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"color" : [ 1.0, 0.741176, 0.196078, 1.0 ],
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 255.484344, 40.0, 79.0, 22.0 ],
+					"style" : "",
+					"text" : "r loadNamed"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"color" : [ 1.0, 0.741176, 0.196078, 1.0 ],
 					"id" : "obj-9",
 					"maxclass" : "newobj",
@@ -5111,6 +5138,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-31", 1 ],
 					"source" : [ "obj-12", 0 ]
 				}
@@ -5129,6 +5163,13 @@
 					"destination" : [ "obj-14", 0 ],
 					"midpoints" : [ 628.76001, 707.0, 619.76001, 707.0 ],
 					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-39", 0 ],
+					"source" : [ "obj-16", 0 ]
 				}
 
 			}
