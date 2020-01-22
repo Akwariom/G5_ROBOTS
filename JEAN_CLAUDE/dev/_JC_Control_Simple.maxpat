@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 34.0, 103.0, 948.0, 681.0 ],
+		"rect" : [ 34.0, 103.0, 933.0, 534.0 ],
 		"bgcolor" : [ 0.878431, 0.878431, 0.858824, 1.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -40,19 +40,6 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
-					"id" : "obj-65",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 795.5, 309.0, 55.0, 22.0 ],
-					"style" : "",
-					"text" : "s mode+"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"color" : [ 0.960784, 0.827451, 0.156863, 1.0 ],
 					"id" : "obj-37",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -81,7 +68,7 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-105",
-					"items" : [ "Coco", ",", "Jean-Claude", ",", "(Maria?)" ],
+					"items" : [ "Jean-Claude", ",", "Coco" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -2310,7 +2297,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 653.136353, 182.0, 50.0, 22.0 ],
 									"style" : "",
-									"text" : "17 128"
+									"text" : "20 128"
 								}
 
 							}
@@ -2357,7 +2344,6 @@
 								"box" : 								{
 									"fontname" : "Arial",
 									"fontsize" : 13.0,
-									"hidden" : 1,
 									"id" : "obj-51",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -5389,7 +5375,7 @@
 					"shape" : 2,
 					"size" : 8,
 					"style" : "",
-					"value" : 2
+					"value" : 5
 				}
 
 			}
@@ -5946,15 +5932,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-37", 0 ],
-					"order" : 1,
-					"source" : [ "obj-105", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-65", 0 ],
-					"order" : 0,
 					"source" : [ "obj-105", 0 ]
 				}
 

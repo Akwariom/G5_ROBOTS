@@ -10,13 +10,14 @@
 
 //___________________________CONFIGURATION WIFI____________
 
-//IPAddress static_ip(10, 0, 0, 110);
+//IPAddress static_ip(192,168,3,19);
 unsigned int localPort = 2390;      // port local d'écoute
-char ssid[] = "Pulso2";        // SSID du réseau
+//char ssid[] = "pulso2";        // SSID du réseau
+char ssid[] = "g5scene"; 
 char pass[] = "pulsopulso";    // mot de passe
 boolean debug = true; // mettre "true" en cas de probleme de connection pour vérifier ce qui se passe dans le serial monitor
 
-IPAddress distantIP(192, 168, 0, 110); // addresse ip de l'ordi destinataire
+IPAddress distantIP(192, 168, 3, 14); // addresse ip de l'ordi destinataire
 unsigned int distantPort = 2391;   // port distant 
 
 
